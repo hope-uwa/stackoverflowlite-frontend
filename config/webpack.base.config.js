@@ -24,12 +24,15 @@ module.exports = (env) => {
             },
           },
           {
-            test: /\.scss$/,
+            test: /\.css$/,
             use: [
               PLATFORM === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
               'css-loader',
-              'sass-loader',
             ],
+          },
+          {
+            test: /\.(woff|woff2|eot|ttf|svg)$/,
+            loader: 'url-loader?limit=100000',
           },
         ],
       },
