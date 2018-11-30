@@ -1,0 +1,136 @@
+.answers-card{
+    position: relative;
+    display: flex;
+    -webkit-box-pack: justify;
+    width: 100%;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items:center;
+    color: #818181;
+    background-color: white;
+    border-top: 0.5px solid #d5d5d5;
+    border-bottom: 0.5px solid #d5d5d5;
+}
+.answer__avatar{
+    display: block;
+    width: 80px;
+    margin-left:1em;
+    margin-right: 1em;
+}
+.answer__avatar .vote:hover{
+    color: #4CAF50;
+    cursor: pointer;
+}
+.answer__avatar-img{
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    color:white;
+    background-color:#779fabc9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.answer__box{
+    width: 75%;
+    margin-right: auto;
+    margin-left: 4em;
+}
+@media screen and (min-width: 769px){
+.answer__box{
+    width: 70%;
+    margin-right: auto;
+    margin-left: 4em;
+}
+.answer__content{
+    width: 70%;
+    margin-right: auto;
+    margin-left: 4em;
+}
+}
+.answer__content-title{
+margin-top: 5px;
+margin-bottom:5px;
+font-size: 13px;
+
+}
+.answer__content-title a{
+    font-weight: bolder;
+    word-spacing: 0.12em;
+    letter-spacing: 0.1em;
+}
+
+.answer__content-body{
+    margin-top:10px;
+    margin-bottom: 1em;
+    font-size:14px;
+}
+.answer__response{
+    margin-right:15px;
+    
+}
+
+/* .question-board{
+
+} */
+.question-head h2{
+    margin-bottom: 5px;
+}
+
+.answer-text{
+    overflow: scroll;
+    width: 100%;
+    height: 100px;
+    
+}
+.best-answer{
+    width: 98%;
+    position: absolute;
+    padding: 5px 10px;
+    color: white;
+    background-color: #818181ab;
+    top: 0px;
+}
+.answer__response span{
+ color: rgba(40, 58, 3, 0.878);
+ font-size: 20px!important;
+ cursor: pointer;
+}
+.answer__response span:hover{
+    color: rgba(109, 157, 13, 0.878);
+    font-size: 20px!important;
+   }
+
+
+@media(max-width:768px){
+    .answer-text{
+        width: 100%!important;
+    }
+    .answer__box{
+        margin-left: 1em;
+        width: 100%;
+    }
+    .answer-given{
+        
+        color: #818181;
+    }
+}
+.most-preferred{
+    background: #faffbd94!important;
+}
+.most-preferred-tag{
+    display: inline-block;
+    border: 1px solid #818181;
+    border-radius: 1em;
+    padding: 2px 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 700;
+    justify-content: flex-end;
+    font-size: 12px;
+}
+.no-margin{
+    margin-top: 0px;
+    margin-bottom:0px;
+}
