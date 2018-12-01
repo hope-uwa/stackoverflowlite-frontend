@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 import QuestionsDisplay from './QuestionsDisplay';
 
