@@ -1,11 +1,16 @@
-// import FormContainer from "./components/container/FormContainer";
 import React from 'react';
 import { render } from 'react-dom';
-// import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore';
+import { loadQuestion } from './actions/questionAction';
 import App from './components/App';
 
+
+const store = configureStore();
+store.dispatch(loadQuestion());
+
 render((
-  
+  <Provider store={store}>
     <App />
-  
+  </Provider>
 ), document.getElementById('root'));

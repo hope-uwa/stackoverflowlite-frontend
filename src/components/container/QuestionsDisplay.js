@@ -12,10 +12,6 @@ class QuestionDisplay extends Component {
   getQuestions() {
     const questions = fetch('https://cors-anywhere.herokuapp.com/https://uwaelpis.herokuapp.com/api/v1/questions').then((res) => {
       res.json().then((res2) => {
-        // console.log(res2.message);
-        // res2.message.map((item) => {
-        //  console.log(item);
-        // });
         this.setState({ questions: res2.message });
       });
     });
