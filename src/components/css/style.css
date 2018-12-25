@@ -5,6 +5,12 @@
     @import url('~./modules/question.css');
     @import url('~./modules/answers.css');
     @import url('~./modules/sidebar.css');
+    @import url('~./ReactToaster.css');
+
+    .Toastify__toast--warning {
+      background: #faffbd!important;
+      color: black!important;
+  }
 
     main, header, footer, nav{
         display: block

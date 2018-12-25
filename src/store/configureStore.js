@@ -6,10 +6,15 @@ const middleware = process.env.NODE_ENV !== 'production' ?
   [require('redux-immutable-state-invariant').default(), thunk] :
   [thunk];
 
-export default function configureStore(initialState) {
+function configureStore(initialState) {
   return createStore(
     rootReducer,
     initialState,
     applyMiddleware(...middleware),
     );
 }
+const store = configureStore();
+window.store = store;
+
+store.subscribe(()=> localStorage.setItem('user',JSON.stringify(store.getState().signupReducer)));
+export default store;

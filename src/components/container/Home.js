@@ -34,7 +34,7 @@ class Home extends React.Component {
                                     </div>
                                     <div className="col3">
                                         <div className="row pt1 pb1 ">
-                                                <button id="askQuestion" onClick="signupModalBtn()" className="btn btn-success btn-md btn-shadow">
+                                                <button id="askQuestion" className="btn btn-success btn-md btn-shadow">
                                                     Ask a Question
                                                 </button>
                                         </div>

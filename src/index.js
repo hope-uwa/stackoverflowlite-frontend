@@ -1,13 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
-import configureStore from './store/configureStore';
+import store from './store/configureStore';
 import { loadQuestion } from './actions/questionAction';
 import App from './components/App';
 
-
-const store = configureStore();
-store.dispatch(loadQuestion());
 
 render((
   <Provider store={store}>

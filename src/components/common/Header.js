@@ -2,9 +2,28 @@
 import React, { PropType } from 'react';
 // import { NavLink } from 'react-router-dom';
 // import { Link, IndexLink } from 'react-router';
+import Signup from '../container/signup/Signup';
+import {connect } from 'react-redux';
+import {signupUser} from '../../actions/signup/signupAction';
 
-class Header extends React.Component {
+export class Header extends React.Component {
+    constructor(props){
+        super(props);
+            this.state = {
+                loginDisplay: '',
+                signupDisplay: ''
+            }
+    }
+
+    loginModalBtn = () => this.setState({ loginDisplay: 'block'});
+    
+    signupModalBtn = (e) => {
+        e.preventDefault();
+        this.setState({ signupDisplay: 'block'})};
   render() {
+      const {loginDisplay, signupDisplay} = this.state;
+      const{ signup, signupInfo } = this.props;
+     
     return (
       <header className="fixed-header">
         <div className="navbar">
@@ -24,8 +43,8 @@ class Header extends React.Component {
                     </div> 
             </div>
             <div className="header-right mr1">
-                <button className="btn-header" id="loginModalBtn" onclick="loginModalBtn()">Login</button>
-                <button className="btn-header" id="signupModalBtn" onclick="signupModalBtn()"> Sign Up</button>
+                <button className="btn-header" id="loginModalBtn" onClick={this.loginModalBtn}>Login</button>
+                <button className="btn-header" id="signupModalBtn" onClick={this.signupModalBtn}> Sign Up</button>
                 
             </div>
 
@@ -34,9 +53,21 @@ class Header extends React.Component {
 
         </div>
 
+        <Signup display={signupDisplay} signup={signup} signupInfo={signupInfo} />
     </header>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = state =>{
+
+    console.log(state)
+    return {
+        signupInfo: state.signupReducer,
+    }
+    }
+    const mapDispatchToProps = {
+        signup: (userData) => signupUser(userData)
+    }
+    
+    export default connect(mapStateToProps, mapDispatchToProps)(Header);
