@@ -6,8 +6,12 @@ import { ToastContainer } from "react-toastify";
 export default class Signup extends Component {
   constructor(props) {
     super(props);
+    
     this.state ={
-        display: ''
+        email: '',
+        username: '',
+        password: '',
+        signupDisplay: 'none'
     }
   }
 
@@ -16,14 +20,15 @@ export default class Signup extends Component {
         email: '',
       username: '',
       password: '',
-        display: 'none'
+        signupDisplay: 'none'
     })
   }
-  componentWillReceiveProps =() =>{
-      const {display} =this.props
-      this.setState({ display });
+  componentWillReceiveProps =(props) =>{
+     const display = props.signupDisplay
+    this.setState({ signupDisplay:display });
       
   }
+  
 
   signupSubmit = async (event) => {
     event.preventDefault();
@@ -32,20 +37,20 @@ export default class Signup extends Component {
     event.target.innerHTML= 'LOADING......'
     const action = await this.props.signup(userData);
     event.target.innerHTML= 'SIGN UP'
-    if(!this.props.signupInfo.error){
-        this.setState({display: 'none'})
+    if(this.props.signupInfo.token){
+    setTimeout(()=>this.setState({signupDisplay:'none'}), 1500)
+    
     }
   }
 
   handleChange= (event) => {
-      console.log(event.target.value)
     this.setState({
       [event.target.id]: event.target.value
     });
   }
 
   render() {
-    const { display } = this.state;
+    const display= this.state.signupDisplay;
     const style ={
         display,
     }

@@ -19,16 +19,14 @@ export const signupRequest = () => ({
   type: SIGN_UP_REQUEST,
 });
 
-export const signupUser = user => dispatch => Axios.post('https://cors-anywhere.herokuapp.com/https://uwaelpis.herokuapp.com/api/v1/auth/signup', user)
+export const signupUser = user => dispatch => Axios.post('http://localhost:5002/api/v1/auth/signup', user)
   .then((response) => {
-    console.log(response);
     toast.success("Signup successfull");
     dispatch(signupSuccess(response));
   })
   .catch((error) => {
-    const toastMsg = error.response.data.error ? error.response.data.error[0] : error.response.data.message; 
-    console.log(toastMsg)
+    const toastMsg = error.response.data.error 
+      ? error.response.data.error[0] : error.response.data.message; 
     toast.warn(`${toastMsg}`);
     dispatch(signupFailure(error.response.data));
- 
-});
+  });
