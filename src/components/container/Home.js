@@ -2,29 +2,28 @@
 /* eslint-disable class-methods-use-this */
 import React from 'react';
 import QuestionsDisplay from './QuestionsDisplay';
+import store from '../../store/configureStore';
+import PostQuestion from './question/PostQuestion';
 
 class Home extends React.Component {
+  // constructor(props){
+  //     super(props);
+  //     state={
+  //         user: 
+  //     }
+  // }
+
+
+  // componentWillReceiveProps =(props) =>{
+  //     const {loginDisplay} =props
+  //     this.setState({ loginDisplay });
+        
+  // }
   render() {
+    const user = store.getState().loginReducer;
     return (
             <main>
-                {/* <div className="question-post" id="questionBanner"> 
-                    <div className="container">
-                        <div className="row">
-                            <div className="question-box pl2 pr2 mt2 mb2 pls1">
-                                <h3>Give it a Title:</h3>
-                                <input type="text" className="w100" name="title" id="">
-                                <h3>Question:</h3>
-                                <textarea name="" className="w100"  id="" cols="30" rows="10" style="overflow-y: scroll"></textarea>
-                                <div className="align-right mt1 mb1">
-                                    <button id="cancel-question" onclick="cancelQuestion()" className="btn btn-danger btn-lg btn-shadow">Cancel</button>
-                                    <button className="btn btn-success btn-lg btn-shadow">Publish</button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div> */}
+                <PostQuestion/>
                 <div className="container">
                     <div className="row">
                         <div className="col9 colsm12  col-order2 ">
@@ -52,25 +51,43 @@ class Home extends React.Component {
                                 </div>
                         </div>
                         <div className="col3 colsm12 sidebar col-order1 " >
-                            <div className="row mt3 mb2 show-md-hide-sm">
+                            {/* <div className="row mt3 mb2 show-md-hide-sm  align-center">
+                            StackOverflow-lite is a platform where people can ask questions and provide answers.
+                            </div> */}
+                            {/* <div className="row welcome show-md-hide-sm">
+                            Questack is a platform where people can ask questions and provide answers
                                 
-                            </div>
-                            <div className="row welcome show-md-hide-sm">
-                                
-                                
-                            </div>
-                            <div className="row h-400 h-sm-auto" >
+                            </div> */}
+                            {!user.token
+                              ? <div className="row h-sm-auto" >
                                     
                                     <ul className="align-center profile__actions">
-                                        <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<a href="#">Top Questions</a></li>
-                                        <li className="profile__actions-recent"><i className=" dblue-text fa fa-filter"></i>&nbsp;<a href="#">Lastest Questions</a></li>
-                                        <li className="profile__actions-threads"><i className=" dblue-text fa fa-comments"></i>&nbsp;<a href="#">All Questions</a></li>
-                                        <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<a href="#">Most Answered Questions</a></li>
-                                        <li className="profile__actions-recent"><i className=" dblue-text fa fa-filter"></i>&nbsp;<a href="#">Recently Asked Questions</a></li>
-                                        <li className="profile__actions-threads"><i className=" dblue-text fa fa-comments"></i>&nbsp;<a href="#">All Questions</a></li>
+                                   
+                                        <li className="profile__actions-questions align-center ">Questack is a platform where people can ask questions and provide answers</li>
+                                        
                                     </ul>
             
-                                </div>
+                            </div>
+                              : <div className="row mt3 h-400" >
+                                <div className="profile-avatar user-letter" >{user.username.charAt(0)}</div>
+                                
+                                <ul className="align-center profile__basic">
+                                    <li className="profile__basic-name user">{user.username}</li>
+                                    <li className="profile__basic-date">Joined: &nbsp;<span className="user-joined"></span></li>
+                                    <li className="profile__basic-question">Questions Asked: <span className="no-of-q">0</span></li>
+                                    <li className="profile__basic-answer">Given Answers: <span className="no-of-a">0</span> </li>
+                                </ul>
+                                <ul className="align-center profile__actions">
+                                    <li className="profile__actions-recent"><i className=" dblue-text fa fa-question-circle-o"></i>&nbsp;<a href="./profile?thread=question-asked">Questions Asked  &nbsp;</a><span className="no-of-q green-text">0</span></li>
+                                    <li className="profile__actions-answers"><i className=" dblue-text fa fa-comments"></i>&nbsp;<a href="./profile?thread=answers-given">Answers Given  &nbsp;</a><span className="no-of-a green-text">0</span></li>
+                                    <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<a href="./profile?thread=mostanswer">Answered Questions</a></li>
+                                    <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<a href="./profile?thread=mostanswer">Unanswered Questions</a></li>
+                                    <li className="profile__actions-threads"><i className=" dblue-text fa fa-question-circle"></i>&nbsp;<a href="./profile?thread=all">All Questions  &nbsp;</a><span className="no-of-all-q green-text">0</span></li>
+                                </ul>
+
+                            </div>
+                            }
+
                         </div>
                     </div>
 

@@ -73,6 +73,9 @@ color:inherit;
     height: 90vh;
 }
 @media(max-width:768px){
+    .sidebar{
+        height: 100%!important;
+    }
     .profile__actions li {
         display: inline-block;
         text-align: left;

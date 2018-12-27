@@ -3,8 +3,12 @@ import React, { PropType } from 'react';
 // import { NavLink } from 'react-router-dom';
 // import { Link, IndexLink } from 'react-router';
 import Signup from '../container/signup/Signup';
+import Login from '../container/login/Login';
 import {connect } from 'react-redux';
 import {signupUser} from '../../actions/signup/signupAction';
+import {loginUser} from '../../actions/login/loginAction';
+import store from '../../store/configureStore';
+
 
 export class Header extends React.Component {
     constructor(props){
@@ -15,15 +19,20 @@ export class Header extends React.Component {
             }
     }
 
-    loginModalBtn = () => this.setState({ loginDisplay: 'block'});
+    logOut = () =>{
+        localStorage.removeItem('user');
+        this.props.history.push('/');
+    }
+
+    loginModalBtn = () => this.setState({ loginDisplay: 'block', signupDisplay: ''});
     
     signupModalBtn = (e) => {
         e.preventDefault();
-        this.setState({ signupDisplay: 'block'})};
+        this.setState({ signupDisplay: 'block', loginDisplay: ''})};
   render() {
       const {loginDisplay, signupDisplay} = this.state;
-      const{ signup, signupInfo } = this.props;
-     
+      const{ signup, login, userInfo, history } = this.props;
+      const user = store.getState().loginReducer
     return (
       <header className="fixed-header">
         <div className="navbar">
@@ -42,18 +51,39 @@ export class Header extends React.Component {
                             <input type="text" name="search" placeholder="Search.."/>
                     </div> 
             </div>
+            { user.token ?
             <div className="header-right mr1">
-                <button className="btn-header" id="loginModalBtn" onClick={this.loginModalBtn}>Login</button>
-                <button className="btn-header" id="signupModalBtn" onClick={this.signupModalBtn}> Sign Up</button>
-                
-            </div>
+                <div className=" dropDownBtn  hide-md-show-sm">
+                        <button className="btn-header ">
+                                <div className="header-profile user-letter">E</div>
+                            </button>
+                            <button className="btn-header header-profile-text black-text user">{user.username}</button>
+                            <button className="btn-header header-profile-text black-text "><i className=" dropdown_icon fa fa-sort-desc"></i></button>
+                </div>
+                <div className=" show-md-hide-sm">
+                    <button className="btn-header">
+                        <div className="header-profile user-letter">E</div>
+                    </button>
+                    <button className="btn-header header-profile-text black-text user">{user.username}</button>
+                    <button className="btn-header ml1 show-md-hide-sm" onClick={this.logOut} id="logoutModalBtn" >Logout</button>
+                    
+                    
+                </div>
+            </div> :
+            <div className="header-right mr1">
+            <button className="btn-header" id="loginModalBtn" onClick={this.loginModalBtn}>Login</button>
+            <button className="btn-header" id="signupModalBtn" onClick={this.signupModalBtn}> Sign Up</button>
+            
+        </div>
+            }
+            
 
         </div>
         <div className="header-banner">
 
         </div>
-
-        <Signup display={signupDisplay} signup={signup} signupInfo={signupInfo} />
+        <Login loginDisplay={loginDisplay} login={login} loginInfo={userInfo} history={history} />
+        <Signup signupDisplay={signupDisplay} signup={signup} signupInfo={userInfo} history={history} />
     </header>
     );
   }
@@ -63,11 +93,12 @@ const mapStateToProps = state =>{
 
     console.log(state)
     return {
-        signupInfo: state.signupReducer,
+        userInfo: state.loginReducer
     }
     }
     const mapDispatchToProps = {
-        signup: (userData) => signupUser(userData)
+        signup: (userData) => signupUser(userData),
+        login: (userData) => loginUser(userData)
     }
     
     export default connect(mapStateToProps, mapDispatchToProps)(Header);
