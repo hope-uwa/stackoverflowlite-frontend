@@ -17,19 +17,17 @@ export const loginFailure = error => ({
 });
 const logout = () => ({ type: LOG_OUT });
 
-export const loginUser = user => (dispatch) => {
-  return Axios.post('http://localhost:5002/api/v1/auth/login', user)
-    .then((response) => {
-      toast.success("Login successfull");
-      dispatch(loginSuccess(response.data));
-      return LOGIN_SUCCESS;
-    })
-    .catch((error) => {
-      const toastMsg = error.response.data.error
-        ? error.response.data.error : error.response.data.message; 
-      toast.warn(`${toastMsg}`);
-      dispatch(loginFailure(error.response.data));
-      return LOGIN_FAILURE;
-    });
-};
+export const loginUser = user => dispatch => Axios.post('http://localhost:5002/api/v1/auth/login', user)
+  .then((response) => {
+    toast.success("Login successfull");
+    dispatch(loginSuccess(response.data));
+    return LOGIN_SUCCESS;
+  })
+  .catch((error) => {
+    const toastMsg = error.response.data.error
+      ? error.response.data.error : error.response.data.message; 
+    toast.warn(`${toastMsg}`);
+    dispatch(loginFailure(error.response.data));
+    return LOGIN_FAILURE;
+  });
 export const logoutUser = () => dispatch => dispatch(logout());

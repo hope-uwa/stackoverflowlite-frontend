@@ -1,11 +1,9 @@
 
 import { combineReducers } from 'redux';
-import simpleReducer from './simpleReducer';
-import questionReducer from './questionReducer';
 import loginReducer from './login/loginReducer';
+import allQuestionReducer from './question/questionReducer';
 
 export default combineReducers({
-  simpleReducer,
-  questionReducer,
+  allQuestionReducer,
   loginReducer,
 });
