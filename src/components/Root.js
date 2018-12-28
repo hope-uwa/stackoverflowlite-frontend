@@ -4,6 +4,7 @@ import { render } from "react-dom";
 import createHistory from 'history/createBrowserHistory';
 import PropTypes from 'prop-types';
 import Header from "./common/Header";
+import Sidebar from "./common/sidebar/Sidebar";
 import Home from "./container/Home";
 
 const history = createHistory();
@@ -18,7 +19,17 @@ class Root extends Component {
       <div>
     
       <Header history= {history}/>
-        {renderData}
+      <main> 
+          <div className="container">
+              <div className="row">
+              <div className="col9 colsm12  col-order2 ">
+              {renderData}
+              </div>
+                  <Sidebar/>
+              </div>
+          </div>       
+      </main>
+       
       <footer className="footer  pt2 pb2 align-center">
               © Bootcamp Cycle 35
       </footer>

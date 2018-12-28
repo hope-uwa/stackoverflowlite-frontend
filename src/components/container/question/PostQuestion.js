@@ -1,33 +1,48 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
+import Banner from '../banner/Banner';
+import {connect} from 'react-redux';
+import { postQuestion } from '../../../actions/allQuestions/allQuestionAction';
 
 
 class PostQuestion extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      body: '',
+    };
+  }
+  handleInputChanges = (e) => {
+      this.setState({ [e.target.name]: e.target.value });
+  }
+  handleSubmit = async(e)=>{
+    console.log(this.props)
+      e.preventDefault();
+      const {createQuestion, history, success}= this.props
+      try {
+        const response = await createQuestion({ ...this.state });
+        if (this.props.success) {
+          return setTimeout(() => history.push('/', { prev: 'create' }), 1000);
+        }
+      } catch (error) {
+        /* do nothing */
+      }
+
+  }
+
   render() {
     return (
         <div>
-            <div className="bg-cream row pt1 align-left pl2 pb1 pls1">
-                <div className="col9">
-                <h1 id="thread-title" className="">All Threads</h1>
-                </div>
-                <div className="col3">
-                    <div className="row pt1 pb1 ">
-                            <button id="askQuestion" className="btn btn-success btn-md btn-shadow">
-                                    Ask a Question
-                                </button>
-                    </div>
-                        
-                </div>
-            </div>
-            <div className="question-box row pl2 pr2 mt2 mb2">
-                <form id="question-form">
+            <Banner title={'Question Pad'} display={'none'}/>
+            <div className="question-box aligned-center row ml1 mr1 mt2 mb2">
+                <form id="question-form" className="question-form mt1">
                     <h3>Give it a Title:</h3>
-                    <input type="text" className="w100" name="title" id="title"/>
+                    <input type="text" onChange={this.handleInputChanges} className="w100" name="title" id="title"/>
                     <h3>Question:</h3>
-                    <textarea name="" className="w100" id="body" cols="30" rows="10" style={{ overflowY: 'scroll' }}></textarea>
+                    <textarea name="body" onChange={this.handleInputChanges} className="w100" id="body" cols="30" rows="10" style={{ overflowY: 'scroll' }}></textarea>
                     <div className="align-right mt1 mb1">
-                        <button id="cancel-question" className="btn btn-danger btn-lg btn-shadow">Cancel</button>
-                        <button type="submit" id="submitQuestion" className="btn btn-success btn-lg btn-shadow">Publish</button>
+                        <button type="submit" onClick={this.handleSubmit} id="submitQuestion" className="btn btn-success btn-lg btn-shadow">Publish</button>
                     </div>
                 </form>
             </div>
@@ -36,4 +51,16 @@ class PostQuestion extends Component {
     );
   }
 } 
-export default PostQuestion;
+
+const mapStateToProps =(state)=>{
+
+    console.log(state.createQuestionReducer.status)
+    return{
+     success :state.createQuestionReducer.status
+    }
+}
+
+const mapDispatchToProps ={
+    createQuestion : (x)=> postQuestion(x)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PostQuestion)

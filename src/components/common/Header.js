@@ -8,6 +8,7 @@ import {connect } from 'react-redux';
 import {signupUser} from '../../actions/signup/signupAction';
 import {loginUser} from '../../actions/login/loginAction';
 import store from '../../store/configureStore';
+import { ToastContainer } from "react-toastify";
 
 
 export class Header extends React.Component {
@@ -82,6 +83,7 @@ export class Header extends React.Component {
         <div className="header-banner">
 
         </div>
+        <ToastContainer autoClose={2000} />
         <Login loginDisplay={loginDisplay} login={login} loginInfo={userInfo} history={history} />
         <Signup signupDisplay={signupDisplay} signup={signup} signupInfo={userInfo} history={history} />
     </header>

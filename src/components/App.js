@@ -8,6 +8,7 @@ import Root from './Root';
 
 import Home from './container/Home';
 import QuestionPage from './container/QuestionPage';
+import PostQuestion from './container/question/PostQuestion';
 import Signup from './container/signup/Signup';
 
 import css from './css/style.css';
@@ -18,7 +19,7 @@ class App extends React.Component {
         <Router>
                 <Root>
                     <Route exact path={"/"} component={Home} />   
-                    <Route path={"/signup"} component={Signup} /> 
+                    <Route path={"/create"} component={PostQuestion} /> 
                     <Route path={"/question"} component={QuestionPage} />    
                     <Route path={"/home"} component={Home} />
                 </Root>
