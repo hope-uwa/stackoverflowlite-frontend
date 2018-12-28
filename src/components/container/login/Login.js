@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { ToastContainer } from "react-toastify";
 
 
 
@@ -73,7 +72,6 @@ export default class Login extends Component {
               </form>
           </div>    
         </div>
-        <ToastContainer autoClose={2000} />
 
     </div>
             

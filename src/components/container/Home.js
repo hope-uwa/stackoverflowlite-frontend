@@ -34,29 +34,18 @@ class Home extends React.Component {
     const {allQuestion} = this.props;
     
     return (
-            <main>
-                
-                <div className="container">
-                    <div className="row">
-                        <div className="col9 colsm12  col-order2 ">
-                        <Banner/>
-                        <div className=" allquestion row pl2 pls1">
-                            {allQuestion.map((x, key)=><AllQuestion questions={x} key={key} />)}  
-                        
-                        </div>
-                        <div className="pagination">
-                            <a href="#">❮</a>
-                            <a href="#">❯</a>
-                        </div>
-                        </div>
-                        <Sidebar user={user}/>
-                    </div>
-
-
-                </div>
-                
-                
-            </main>
+        <div>
+            <Banner title={'Lastest Questions'}/>
+            <div className=" allquestion row pl2 pls1">
+                {allQuestion.map((x, key)=><AllQuestion questions={x} key={key} />)}  
+            
+            </div>
+            <div className="pagination">
+                <a href="#">❮</a>
+                <a href="#">❯</a>
+            </div>
+        </div>
+            
     );
   }
 }

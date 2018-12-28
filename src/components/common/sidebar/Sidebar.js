@@ -4,11 +4,12 @@ import React, { PropType } from 'react';
 // import { NavLink } from 'react-router-dom';
 // import { Link, IndexLink } from 'react-router';
 import { connect } from 'react-redux';
+import store from '../../../store/configureStore';
 
 
 class Sidebar extends React.Component {
   render() {
-    const { user } = this.props;
+    const user = store.getState().loginReducer;
     return (
         <div className="col3 colsm12 sidebar col-order1 " >
             {/* <div className="row mt3 mb2 show-md-hide-sm  align-center">

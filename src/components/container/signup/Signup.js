@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-import { ToastContainer } from "react-toastify";
 
 
 class Signup extends Component {
@@ -75,7 +74,6 @@ class Signup extends Component {
                         </div>
                     </form>
                 </div>
-                <ToastContainer autoClose={2000} />
             </div>
     );
   }
