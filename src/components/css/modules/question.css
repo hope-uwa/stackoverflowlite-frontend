@@ -108,3 +108,25 @@ margin-bottom:5px;
     
     background-color:#4caf5082;
 }
+
+.question-actions{
+    list-style: none;
+    text-align: left;
+    margin-block-start: 0px!important;
+    padding-inline-start: 0px!important;
+    padding-inline-end: 0px !important;
+    margin-block-end: 0px !important;
+}
+.question-actions li{
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+    padding-top: 5px;
+    font-size: 16px;
+}
+.question-actions li:hover{
+    background-color: #1a8d1e82;
+    color: white;
+}
+.question-droptip{
+    font-size: 24px;
+}
