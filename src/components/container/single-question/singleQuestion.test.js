@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { shallow } from 'enzyme';
-import { SingleQuestion, mapDispatchToProps, mapStateToProps } from './SingleQuestion';
+import { SingleQuestion, mapDispatchToProps, mapStateToProps } from './singleQuestion';
 // import { loadAnArticle } from '../../../actions/singlearticle/singleArticleAction';
 
 describe('landing page', () => {

@@ -15,6 +15,7 @@ exports[`landing page should show page is loading 1`] = `
           "title": "this is the title",
         }
       }
+      view={[Function]}
     />
   </div>
   <div
