@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`landing page should show page is loading 1`] = `
+<div>
+  <Banner
+    title="Lastest Questions"
+  />
+  <div
+    className=" allquestion row pl2 pls1"
+  >
+    <AllQuestions
+      key="0"
+      questions={
+        Object {
+          "title": "this is the title",
+        }
+      }
+    />
+  </div>
+  <div
+    className="pagination"
+  >
+    <a
+      href="#"
+    >
+      ❮
+    </a>
+    <a
+      href="#"
+    >
+      ❯
+    </a>
+  </div>
+</div>
+`;

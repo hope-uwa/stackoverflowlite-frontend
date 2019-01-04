@@ -36,10 +36,10 @@ export const loadAllQuestion = () => (dispatch) => {
     url: 'http://localhost:5002/api/v1/questions',
     headers: [],
   });
-  dispatch(loadQuestion);
+  dispatch(loadQuestion());
   return request.then(
     (response) => {
-  
+      console.log(response.data.message)
       dispatch(allQuestionSuccess(response.data.message));
     },
     err => dispatch(allQuestionFailure(err)),

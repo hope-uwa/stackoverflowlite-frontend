@@ -24,7 +24,9 @@ export default class Login extends Component {
       this.setState({ loginDisplay });
       
   }
-
+  checkBoxChecked() {
+    return true
+  }
   loginSubmit = async (event) => {
     event.preventDefault();
     const userData = { ...this.state };
@@ -63,11 +65,11 @@ export default class Login extends Component {
           <div className="modal__signup-form row">
               <form id="login-form" className="w100 mt2 mb2" >
                 <div className="modal-form align-center mb2">
-                <input type="email" required placeholder="Enter Email Address" id="loginEmail" className="" name="email" onChange={this.handleChange} />
-                <input type="password" required placeholder="Enter Password" id="loginPassword" className="" name="password" onChange={this.handleChange} />
+                <input type="email" required placeholder="Enter Email Address" id="loginEmail" className="email" name="email" onChange={this.handleChange} />
+                <input type="password" required placeholder="Enter Password" id="loginPassword" className="email" name="password" onChange={this.handleChange} />
                 </div>  
                 <div className="modal-footer  w-100 pt2 pb1">
-                <button type="submit"onClick={this.loginSubmit} className="btn btn-shadow btn_login-signup w60">LOGIN</button>
+                <button id="submit" type="submit"onClick={this.loginSubmit} className="btn btn-shadow btn_login-signup w60">LOGIN</button>
                 </div>  
               </form>
           </div>    

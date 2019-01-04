@@ -2,15 +2,15 @@
 /* eslint-disable class-methods-use-this */
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadAllQuestion } from '../../actions/allQuestions/allQuestionAction'
-import AllQuestion from '../presentation/allquestions/AllQuestions';
-import QuestionsDisplay from './QuestionsDisplay';
-import store from '../../store/configureStore';
-import PostQuestion from './question/PostQuestion';
-import Banner from './banner/Banner';
-import Sidebar from '../common/sidebar/Sidebar'; 
+import { loadAllQuestion } from '../../../actions/allQuestions/allQuestionAction'
+import AllQuestion from '../../presentation/allquestions/AllQuestions';
+import QuestionsDisplay from '../QuestionsDisplay';
+import store from '../../../store/configureStore';
+import PostQuestion from '../question/PostQuestion';
+import Banner from '../banner/Banner';
+import Sidebar from '../../common/sidebar/Sidebar'; 
 
-class Home extends React.Component {
+export class Home extends React.Component {
   // constructor(props){
   //     super(props);
   //     state={
@@ -24,6 +24,12 @@ class Home extends React.Component {
   //     this.setState({ loginDisplay });
         
   // }
+  viewQuestion = (questionId) => {
+    const {
+      history
+    } = this.props;
+    history.push(`/${questionId}`);
+  }
 
   componentWillMount =()=>{
       this.props.loadQuestion();
@@ -37,7 +43,7 @@ class Home extends React.Component {
         <div>
             <Banner title={'Lastest Questions'}/>
             <div className=" allquestion row pl2 pls1">
-                {allQuestion.map((x, key)=><AllQuestion questions={x} key={key} />)}  
+                {allQuestion.map((x, key)=><AllQuestion questions={x} key={key} view={this.viewQuestion} />)}  
             
             </div>
             <div className="pagination">

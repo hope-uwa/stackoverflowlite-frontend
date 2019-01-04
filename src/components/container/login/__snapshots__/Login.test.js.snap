@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> matches the snapshoot 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Login>
+    <div
+      className="modal"
+      id="loginModal"
+      style={
+        Object {
+          "display": "",
+        }
+      }
+    >
+      <div
+        className="modal-content"
+      >
+        <div
+          className="modal-head w100"
+        >
+          <span
+            className="pl1 modal-title "
+          >
+            Welcome Back!
+          </span>
+          <span
+            className="close"
+            id="s-close"
+            onClick={[Function]}
+          >
+            ×
+          </span>
+        </div>
+        <div
+          className="modal__signup-form row"
+        >
+          <form
+            className="w100 mt2 mb2"
+            id="login-form"
+          >
+            <div
+              className="modal-form align-center mb2"
+            >
+              <input
+                className="email"
+                id="loginEmail"
+                name="email"
+                onChange={[Function]}
+                placeholder="Enter Email Address"
+                required={true}
+                type="email"
+              />
+              <input
+                className="email"
+                id="loginPassword"
+                name="password"
+                onChange={[Function]}
+                placeholder="Enter Password"
+                required={true}
+                type="password"
+              />
+            </div>
+            <div
+              className="modal-footer  w-100 pt2 pb1"
+            >
+              <button
+                className="btn btn-shadow btn_login-signup w60"
+                id="submit"
+                onClick={[Function]}
+                type="submit"
+              >
+                LOGIN
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </Login>
+</Provider>
+`;
