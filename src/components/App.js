@@ -20,8 +20,8 @@ class App extends React.Component {
         <Router>
                 <Root>
                     <Route exact path={"/"} component={Home} /> 
-                    <Route path={"/:id"} component={SingleQuestion} />  
                     <Route path={"/create"} component={PostQuestion} /> 
+                    <Route path={"/:id"} component={SingleQuestion} />   
                     <Route path={"/question"} component={QuestionPage} /> 
                     <Route path={"/home"} component={Home} />
                 </Root>

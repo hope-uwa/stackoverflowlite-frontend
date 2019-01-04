@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const Answers = (props) => {
-  const { answers } = props;
-    console.log('this', props)
+  const {
+    answers, qid, correct, auth, 
+  } = props;
+  console.log('this', props);
   return (
         <div className="answers-card pt1 pb1">
             <div className="answer__avatar">
@@ -25,7 +27,10 @@ const Answers = (props) => {
                         <span><i className=" ml1 msl1 vote fa fa-thumbs-o-up"></i><sup>20</sup></span>
                         <span><i className=" ml1 msl1 vote fa fa-thumbs-down"></i><sup>50</sup></span>
                         <span><i className="ml1 msl1 fa fa-comment"></i><sup>10</sup></span>
-                        <span className="tooltip"><span className="tooltiptext">make preferred</span><i className="ml1 msl1 fa fa-check"></i></span>
+                        {auth && <span onClick={() => correct(qid, answers.id)} className="tooltip">
+                            <span className="tooltiptext">make preferred</span>
+                            <i className="ml1 msl1 fa fa-check"></i>
+                        </span>}
                         
                 </div>
             </div>
@@ -35,6 +40,13 @@ const Answers = (props) => {
             
         </div>
   );
+};
+
+Answers.propTypes = {
+  answers: PropTypes.object,
+  qid: PropTypes.string.isRequired,
+  correct: PropTypes.func.isRequired,
+  auth: PropTypes.bool.isRequired,
 };
 
 export default Answers;

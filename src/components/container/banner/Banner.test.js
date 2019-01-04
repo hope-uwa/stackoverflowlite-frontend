@@ -15,10 +15,10 @@ describe('display banner', () => {
         likes: 5,
         User: {
           username: 'noldor',
-          avatarUrl: 'noldor.jpg'
-        }
+          avatarUrl: 'noldor.jpg',
+        },
       },
-      read: () => {}
+      read: () => {},
     };
     return shallow(<Banner />);
   };
