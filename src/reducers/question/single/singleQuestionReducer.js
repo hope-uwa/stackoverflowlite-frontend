@@ -9,6 +9,8 @@ import {
 const initialState = {
   isLoading: false,
   question: '',
+  answer:'',
+  preferredAnswer: '',
 }
 
 const singleQuestionReducer = ( state=initialState, action)=> {
@@ -28,7 +30,9 @@ const singleQuestionReducer = ( state=initialState, action)=> {
         return {
             ...state,
             isLoading:false,
-            question: action.question
+            question: action.question,
+            answer: action.answers,
+            preferredAnswer: action.preferred,
         }
         default:
         return state

@@ -36,7 +36,7 @@ SIGN_UP_SUCCESS, SIGN_UP_FAILURE
         loading: false,
         success: true,
         token: action.user.token,
-        username: action.user.name,
+        username: action.user.name, 
       };
   
     case LOGIN_FAILURE:

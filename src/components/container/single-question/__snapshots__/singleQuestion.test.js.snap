@@ -24,40 +24,17 @@ exports[`landing page should show page is loading 1`] = `
     </div>
     <div
       className="col3 pt2 pb1"
-    >
-      <span
-        className="droptip"
-      >
-        <span
-          className="droptiptext"
-        >
-          <ul
-            className="question-actions"
-          >
-            <li>
-              Delete
-            </li>
-            <li>
-              Edit
-            </li>
-          </ul>
-        </span>
-        <i
-          className="question-droptip ml1 msl1 fa fa-ellipsis-v"
-        />
-      </span>
-    </div>
+    />
     <div
       className="question-body"
     />
   </div>
-  <PreferredAnswer />
   <div
     className="row  mls0 pb3 answers-board"
   >
-    <h1>
+    <h3>
       No answer has been provided yet
-    </h1>
+    </h3>
   </div>
 </div>
 `;

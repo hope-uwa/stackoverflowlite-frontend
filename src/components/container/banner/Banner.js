@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Banner extends Component {
   render() {
@@ -23,4 +24,9 @@ class Banner extends Component {
     );
   }
 }
+
+Banner.propTypes = {
+  title: PropTypes.string.isRequired,
+  display: PropTypes.string.isRequired,
+};
 export default Banner;
