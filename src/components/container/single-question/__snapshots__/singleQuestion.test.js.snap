@@ -1,41 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`landing page should show page is loading 1`] = `
-<div
-  className="row align-left question-board pl2 pb1 mb1 pls1"
->
+<div>
   <div
-    className="col9"
+    className="row align-left question-board pl2 pb1 mb1 pls1"
   >
     <div
-      className="question-head mb1"
+      className="col9"
     >
-      <h1>
-         
-        this is the title
-      </h1>
-      <span
-        className="ml2"
+      <div
+        className="question-head mb1"
       >
-        5 days ago by
-      </span>
-      <span>
-        Elpis
+        <h1>
+           
+          this is the title
+        </h1>
+        <span
+          className="ml2"
+        />
+         by  
+        <span />
+      </div>
+    </div>
+    <div
+      className="col3 pt2 pb1"
+    >
+      <span
+        className="droptip"
+      >
+        <span
+          className="droptiptext"
+        >
+          <ul
+            className="question-actions"
+          >
+            <li>
+              Delete
+            </li>
+            <li>
+              Edit
+            </li>
+          </ul>
+        </span>
+        <i
+          className="question-droptip ml1 msl1 fa fa-ellipsis-v"
+        />
       </span>
     </div>
+    <div
+      className="question-body"
+    />
   </div>
+  <PreferredAnswer />
   <div
-    className="col3 pt1 pb1"
+    className="row  mls0 pb3 answers-board"
   >
-    <button
-      className="btn btn-success btn-md btn-shadow"
-      id=""
-    >
-      Add an Answer
-    </button>
+    <h1>
+      No answer has been provided yet
+    </h1>
   </div>
-  <div
-    className="question-body"
-  />
 </div>
 `;
