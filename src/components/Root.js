@@ -5,7 +5,7 @@ import createHistory from 'history/createBrowserHistory';
 import PropTypes from 'prop-types';
 import Header from "./common/Header";
 import Sidebar from "./common/sidebar/Sidebar";
-import Home from "./container/Home";
+import Home from "./container/home/Home";
 
 const history = createHistory();
 class Root extends Component {

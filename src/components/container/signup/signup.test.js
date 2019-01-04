@@ -25,7 +25,6 @@ describe('<Signup />', () => {
 
   it('render sigup page correctly', () => {
     const wrapper = mount(<Signup />);
-    console.log(wrapper.debug());
     expect(wrapper.find('button').text()).toBe('SIGN UP');
     expect(wrapper.find('.modal-title').text()).toBe('Join Our Community!');
     expect(wrapper.find('form input').length).toEqual(3);

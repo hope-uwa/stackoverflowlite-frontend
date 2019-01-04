@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display banner should show page is loading 1`] = `
+<div
+  className="row bg-cream align-left pt1 pl2 pb1 pls1 bb-grey"
+>
+  <div
+    className="col9"
+  >
+    <h1
+      className=""
+      id="thread-title"
+    />
+  </div>
+  <div
+    className="col3"
+  >
+    <div
+      className="row pt1 pb1 "
+    >
+      <Link
+        replace={false}
+        to="/create"
+      >
+        <button
+          className="btn btn-success btn-md btn-shadow"
+          id="askQuestion"
+        >
+          Ask a Question
+        </button>
+      </Link>
+    </div>
+  </div>
+</div>
+`;
