@@ -29,6 +29,7 @@ exports[`landing page should show page is loading 1`] = `
       className="question-body"
     />
   </div>
+  <PreferredAnswer />
   <div
     className="row  mls0 pb3 answers-board"
   >
@@ -36,5 +37,10 @@ exports[`landing page should show page is loading 1`] = `
       No answer has been provided yet
     </h3>
   </div>
+  <p
+    className="align-center blckgrey-text"
+  >
+    You have to login to add an answer
+  </p>
 </div>
 `;

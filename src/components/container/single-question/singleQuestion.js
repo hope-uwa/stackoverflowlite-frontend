@@ -8,6 +8,8 @@ import Answer from '../../presentation/viewanswers/answers';
 import PreferredAnswer from '../../presentation/preferred/PreferredAnswer';
 import store from '../../../store/configureStore';
 import { correctAnswer } from '../../../actions/correct-answer/correctAnswer';
+import PostAnswer from '../../presentation/postanswer/postAnswer';
+import { postAnswerAction } from '../../../actions/post-answer/postAnswer';
 
 export class SingleQuestion extends React.Component {
   constructor(props) {
@@ -29,7 +31,7 @@ export class SingleQuestion extends React.Component {
 
   render(){
     const user = store.getState().loginReducer;
-      const { question, id ,answers, preferred} = this.props;
+      const { question, id ,answers, preferred, postAnswer} = this.props;
       let auth = false;
       if(user.username=== question.username){
         auth = true;
@@ -57,10 +59,11 @@ export class SingleQuestion extends React.Component {
                 {question.body}
             </div>   
         </div>
-        {preferred ? <PreferredAnswer answer={preferred[0]} />: ''}
+        <PreferredAnswer answer={preferred} />
         <div className="row  mls0 pb3 answers-board">
       {Array.isArray(answers) ? answers.map(x=> <Answer answers={x} key={x.id} correct ={this.makePreferred} qid={id} auth={auth}/>) : preferred ? '': <h3>No answer has been provided yet</h3> }            
         </div>
+        {user.token ? <PostAnswer post={postAnswer} id={id}/>: <p className="align-center blckgrey-text">You have to login to add an answer</p>}
      </div>
 
       )
@@ -80,5 +83,6 @@ const mapStateToProps = (state, myOwnProps )=>{
 const mapDispatchToProps ={
     getSingleQuestion : (x)=> loadSingleQuestion(x),
     chooseAnswer : (qid, aid) => correctAnswer( qid, aid ),
+    postAnswer: (qid, answer) => postAnswerAction(qid, answer)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SingleQuestion);
