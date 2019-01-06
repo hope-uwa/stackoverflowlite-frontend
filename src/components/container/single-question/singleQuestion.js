@@ -62,7 +62,7 @@ export class SingleQuestion extends React.Component {
     // console.log(auth);
     return (
       <div>
-        <div className="row align-left question-board pl2 pb1 mb1 pls1">
+        <div className="row align-left question-board pl2 pb1 mb1 pls1 single-question">
           <div className="col9">
             <div className="question-head mb1">
               <h1> {question.title}</h1>
@@ -70,12 +70,12 @@ export class SingleQuestion extends React.Component {
             </div>
           </div>
           <div className="col3 pt2 pb1">
-            {auth && <span className="droptip"><span className="droptiptext">
+            {auth && <span className="tooltip"><span className="tooltiptext">
               <ul className="question-actions">
                 <li onClick={this.deleteAction}>Delete</li>
-                <li>Edit</li>
+               
               </ul>
-            </span><i className="question-droptip ml1 msl1 fa fa-ellipsis-v"></i></span>}
+            </span><i className="question-droptip ml1 msl1 fa fa-trash-o"></i></span>}
 
           </div>
           <div className="question-body">
@@ -109,7 +109,6 @@ SingleQuestion.propTypes = {
 
 };
 const mapStateToProps = (state, myOwnProps) => {
-    console.log('post:', state.postAnswerReducer.answer)
   return {
     id: myOwnProps.match.params.id,
     question: state.singleQuestion.question,

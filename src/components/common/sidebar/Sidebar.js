@@ -28,10 +28,10 @@ class Sidebar extends React.Component {
     const questionNo = allQuestions.length;
     const unanswered = allQuestions.filter(x => x.count < 1).length;
     const answered = allQuestions.filter(x => x.count > 0).length;
-    const userQuestion = allQuestions.filter(x => x.user_name === store.getState().username).length;
+    const userQuestion = allQuestions.filter(x => x.user_name === store.getState().loginReducer.username).length;
     this.setState({
- questionNo, answered, unanswered, userQuestion 
-});
+      questionNo, answered, unanswered, userQuestion
+    });
   }
 
     componentDidMount =() => {
@@ -40,13 +40,10 @@ class Sidebar extends React.Component {
 
 
     render() {
-    // const user = store.getState().loginReducer;
       const user = this.props.userInfo;
-      const { questions, userQuestionLength } = this.props;
-      console.log('error', this.state);
       const {
- questionNo, unanswered, answered, userQuestion 
-} = this.state;
+        questionNo, unanswered, answered, userQuestion
+      } = this.state;
       return (
         <div className="col3 colsm12 sidebar col-order1 " >
 
@@ -59,9 +56,9 @@ class Sidebar extends React.Component {
                   <h3>Questack is a platform where people can ask questions and provide answers</h3>
                 </li>
                 <ul className="align-center profile__actions">
-                  <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<Link to="/">Answered Questions &nbsp;</Link><span className="no-of-q green-text">{answered}</span></li>
-                  <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<Link to="/">Unanswered Questions &nbsp;</Link><span className="no-of-q green-text">{unanswered}</span></li>
-                  <li className="profile__actions-threads"><i className=" dblue-text fa fa-comments"></i>&nbsp;<Link to="/">All Questions  &nbsp;</Link><span className="no-of-all-q green-text">{questionNo}</span></li>
+                  <li className="profile__actions-questions"><Link to="/answered"><i className="dblue-text fa fa-fire"></i>&nbsp;Answered Questions &nbsp;<span className="no-of-q green-text">{answered}</span></Link></li>
+                  <li className="profile__actions-questions"><Link to="/unanswered"><i className="dblue-text fa fa-fire"></i>&nbsp;Unanswered Questions &nbsp;<span className="no-of-q green-text">{unanswered}</span></Link></li>
+                  <li className="profile__actions-threads"> <Link to="/"><i className=" dblue-text fa fa-comments"></i>&nbsp;All Questions  &nbsp;<span className="no-of-all-q green-text">{questionNo}</span></Link></li>
                 </ul>
 
 
@@ -78,10 +75,10 @@ class Sidebar extends React.Component {
                 </li>
               </ul>
               <ul className="align-center profile__actions">
-                <li className="profile__actions-recent"><i className=" dblue-text fa fa-filter"></i>&nbsp;<Link to="/user">Questions Asked  &nbsp;</Link><span className="no-of-q green-text">{userQuestion}</span></li>
-                <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<Link to="/answered">Answered Questions &nbsp;</Link><span className="no-of-q green-text">{answered}</span></li>
-                <li className="profile__actions-questions"><i className="dblue-text fa fa-fire"></i>&nbsp;<Link to="/">Unanswered Questions &nbsp;</Link><span className="no-of-q green-text">{unanswered}</span></li>
-                <li className="profile__actions-threads"><i className=" dblue-text fa fa-comments"></i>&nbsp;<Link to="/">All Questions  &nbsp;</Link><span className="no-of-all-q green-text">{questionNo}</span></li>
+                <li className="profile__actions-recent"><Link to="/user"><i className=" dblue-text fa fa-filter"></i>&nbsp;Questions Asked  &nbsp;<span className="no-of-q green-text">{userQuestion}</span></Link></li>
+                <li className="profile__actions-questions"><Link to="/answered"><i className="dblue-text fa fa-fire"></i>&nbsp;Answered Questions &nbsp;<span className="no-of-q green-text">{answered}</span></Link></li>
+                <li className="profile__actions-questions"><Link to="/unanswered"><i className="dblue-text fa fa-fire"></i>&nbsp;Unanswered Questions &nbsp;<span className="no-of-q green-text">{unanswered}</span></Link></li>
+                <li className="profile__actions-threads"><Link to="/"><i className=" dblue-text fa fa-comments"></i>&nbsp;All Questions  &nbsp;<span className="no-of-all-q green-text">{questionNo}</span></Link></li>
               </ul>
 
             </div>
@@ -103,7 +100,6 @@ Sidebar.propTypes = {
 
 // export default Sidebar;
 const mapStateToProps = (state) => {
-
   return {
     userInfo: state.loginReducer,
     questions: state.allQuestionReducer.questions,

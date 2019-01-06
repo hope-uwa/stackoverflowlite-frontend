@@ -31,7 +31,7 @@ export const postAnswerAction = (qid, answer) => (dispatch) => {
     },
     (err) => {
       console.log(err.response);
-      toast.warn(`${err.response.data.message}`);
+      toast.warn(`${err.response.data.error}`);
       dispatch(postAnswerFailure(err));
     },
   );
