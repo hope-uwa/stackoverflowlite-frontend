@@ -53,9 +53,9 @@ describe('', () => {
 
     const questions = undefined;
     const mockActions = [
-      {
-        type: LOAD_ALL_QUESTION,
-      }, 
+      // {
+      //   type: LOAD_ALL_QUESTION,
+      // }, 
       {
         type: ALL_QUESTION_SUCCESS, questions,
       },

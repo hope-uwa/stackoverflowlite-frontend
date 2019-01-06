@@ -26,9 +26,4 @@ describe('display banner', () => {
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
   });
-  it('render banner component', () => {
-    const wrapper = setup();
-
-    expect(wrapper.find('#askQuestion').text()).toEqual('Ask a Question');
-  });
 });

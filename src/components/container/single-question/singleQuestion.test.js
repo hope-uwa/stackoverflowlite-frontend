@@ -13,7 +13,7 @@ describe('landing page', () => {
       getSingleQuestion: () => {},
       anArticle: {
         isLoading,
-        
+
       },
       relatedArticle: {
         isLoading,
