@@ -3,7 +3,7 @@
 exports[`landing page should show page is loading 1`] = `
 <div>
   <div
-    className="row align-left question-board pl2 pb1 mb1 pls1"
+    className="row align-left question-board pl2 pb1 mb1 pls1 single-question"
   >
     <div
       className="col9"
