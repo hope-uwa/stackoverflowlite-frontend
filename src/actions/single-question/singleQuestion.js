@@ -28,13 +28,11 @@ export const loadSingleQuestion = id => (dispatch) => {
   dispatch(questionLoading());
   return request.then(
     (response) => {
-      console.log(response.data)
       const answerArray = response.data.question.answers;
       const preferred = Array.isArray(answerArray) ? answerArray.filter(x=> x.preferred==='true'): ''
       const answers = Array.isArray(answerArray) ? answerArray.filter(x=> x.preferred !== 'true'): ''
-      // console.log(preferred, answers)
-
-      dispatch(questionSuccess(response.data.question, answers, preferred));
+      const preferredArray = preferred ? preferred : []
+      dispatch(questionSuccess(response.data.question, answers, preferredArray));
     },
     err => dispatch(questionFailure(err)),
   );

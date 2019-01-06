@@ -70,11 +70,13 @@ color:inherit;
 }
 .sidebar{
     background-color: #e0e0e075;
-    height: 90vh;
+    /* height: 90vh; */
+    min-height: 80vh;
 }
 @media(max-width:768px){
     .sidebar{
         height: 100%!important;
+        min-height: 0vh;
     }
     .profile__actions li {
         display: inline-block;
@@ -87,4 +89,14 @@ color:inherit;
         letter-spacing: -.6px;
         transition: padding-left .4s;
     }
+    .sidebar-fixed{
+        position: relative!important;
+        /* background-color: inherit; */
+        width: inherit;
+    }
+}
+.sidebar-fixed{
+    position: fixed;
+    /* background-color: inherit; */
+    width: inherit;
 }

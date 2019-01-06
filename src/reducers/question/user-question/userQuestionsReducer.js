@@ -1,9 +1,9 @@
 
 import {
-  ALL_QUESTION_SUCCESS,
-  ALL_QUESTION_FAILURE,
-  LOAD_ALL_QUESTION
-} from '../../actions/types/allquestions';
+  LOAD_ALL_QUESTION,
+  USER_QUESTION_FAILURE,
+  USER_QUESTION_SUCCESS
+} from '../../../actions/types/allquestions';
 
 export const initialState = {
   questions: [],
@@ -16,13 +16,13 @@ const questionReducer = (state = initialState, action) => {
       ...state,
       isLoading: true
     };
-  case ALL_QUESTION_SUCCESS:
+  case USER_QUESTION_SUCCESS:
     return {
       ...state,
       questions: action.questions,
       isLoading: false
     };
-  case ALL_QUESTION_FAILURE:
+  case USER_QUESTION_FAILURE:
     return {
       ...state,
       isLoading: false,

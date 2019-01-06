@@ -1,31 +1,32 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
-import { browserHistory } from "react-router";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { connect } from 'react-redux';
-import Root from './Root';
 
-import Home from './container/home/Home';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Root from './Root';
+import HomePage from './container/home/Home';
 import QuestionPage from './container/QuestionPage';
 import PostQuestion from './container/question/PostQuestion';
-import SingleQuestion from './container/single-question/singleQuestion';
-import Signup from './container/signup/Signup';
+import Single from './container/single-question/singleQuestion';
+import UserQuestions from './container/user-questions/userQuestion';
 
 import css from './css/style.css';
 
 class App extends React.Component {
   render() {
     return (
-        <Router>
-                <Root>
-                    <Route exact path={"/"} component={Home} /> 
-                    <Route path={"/create"} component={PostQuestion} /> 
-                    <Route path={"/:id"} component={SingleQuestion} />   
-                    <Route path={"/question"} component={QuestionPage} /> 
-                    <Route path={"/home"} component={Home} />
-                </Root>
-        </Router>
+      <Router>
+        <Root>
+          <Route exact path={'/'} component={HomePage} />
+          <Route path={'/questions/:id'} component={Single} />
+          <Route path={'/create'} component={PostQuestion} />
+          <Route path={'/user'} component={UserQuestions} />
+
+          <Route path={'/question'} component={QuestionPage} />
+          <Route path={'/home'} component={HomePage} />
+        </Root>
+      </Router>
     );
   }
 }

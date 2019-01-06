@@ -17,19 +17,7 @@ exports[`display banner should show page is loading 1`] = `
   >
     <div
       className="row pt1 pb1 "
-    >
-      <Link
-        replace={false}
-        to="/create"
-      >
-        <button
-          className="btn btn-success btn-md btn-shadow"
-          id="askQuestion"
-        >
-          Ask a Question
-        </button>
-      </Link>
-    </div>
+    />
   </div>
 </div>
 `;
