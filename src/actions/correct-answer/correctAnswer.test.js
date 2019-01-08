@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 import MockAdapter from 'axios-mock-adapter';
 import configureMockStore from 'redux-mock-store';
-import axios from 'axios';
 import thunk from 'redux-thunk';
+import axios from 'axios';
 
 import {
   correctAnswer,

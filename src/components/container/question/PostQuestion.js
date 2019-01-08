@@ -23,11 +23,11 @@ export class PostQuestion extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { createQuestion, history, } = this.props;
+
     try {
-      await createQuestion({ ...this.state });
+      await this.props.createQuestion({ ...this.state });
       if (this.props.success) {
-        return setTimeout(() => history.push('/', { prev: 'create' }), 1000);
+        return setTimeout(() => this.props.history.push('/', { prev: 'create' }), 1000);
       }
     } catch (error) {
       /* do nothing */
@@ -73,4 +73,5 @@ export const mapStateToProps = (state) => {
 export const mapDispatchToProps = {
   createQuestion: x => postQuestion(x)
 };
-export default connect(mapStateToProps, mapDispatchToProps)(PostQuestion);
+const ConnectedPostQuestion = connect(mapStateToProps, mapDispatchToProps)(PostQuestion);
+export default ConnectedPostQuestion;
