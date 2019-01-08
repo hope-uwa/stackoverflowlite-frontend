@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Root from './Root';
 import HomePage from './container/home/Home';
 import QuestionPage from './container/QuestionPage';
-import PostQuestion from './container/question/PostQuestion';
+import QuestionPostPage from './container/question/PostQuestion';
 import Single from './container/single-question/singleQuestion';
 import UserQuestions from './container/user-questions/userQuestion';
 import Answered from './container/answered-question/answeredQuestion';
@@ -23,12 +23,11 @@ class App extends React.Component {
           <Route exact path={'/'} component={HomePage} />
           <Route path={'/questions'} component={QuestionPage} />
           <Route path={'/questions/:id'} component={Single} />
-          <Route path={'/create'} component={PostQuestion} />
+          <Route path={'/create'} component={QuestionPostPage} />
           <Route path={'/user'} component={UserQuestions} />
           <Route path={'/answered'} component={Answered} />
           <Route path={'/unanswered'} component={Unanswered} />
 
-          <Route path={'/question'} component={QuestionPage} />
           <Route path={'/home'} component={HomePage} />
         </Root>
       </Router>

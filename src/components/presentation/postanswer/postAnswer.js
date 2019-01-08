@@ -1,10 +1,10 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 class PostAnswer extends React.Component {
   constructor(props) {
     super(props);
-    console.log('props', props);
     this.state = {
       body: '',
     };
@@ -18,10 +18,7 @@ class PostAnswer extends React.Component {
         e.preventDefault();
         const { post, id } = this.props;
         try {
-          const response = await post(id, { ...this.state });
-          if (response) {
-            return setTimeout(() => history.push(`/${id}`), 1000);
-          }
+          await post(id, { ...this.state });
         } catch (error) {
           /* do nothing */
         }
@@ -37,7 +34,7 @@ class PostAnswer extends React.Component {
               <div className="answer__box align-right">
                 <form id="answer-form">
                   <h4 className="align-left">Your Answer</h4>
-                  <textarea name="" name="body" onChange={this.handleInputChanges} id="answer" className="answer-text"></textarea>
+                  <textarea name="body" onChange={this.handleInputChanges} id="answer" className="answer-text"></textarea>
                   <button id="answerQuestion" onClick={this.handleSubmit} className="btn btn-success btn-sm">Add Answer</button>
                 </form>
               </div>
@@ -49,4 +46,9 @@ class PostAnswer extends React.Component {
         );
       }
 }
+
+PostAnswer.propTypes = {
+  post: PropTypes.func,
+  id: PropTypes.string,
+};
 export default PostAnswer;

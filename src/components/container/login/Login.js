@@ -26,10 +26,6 @@ export default class Login extends Component {
     });
   }
 
-  checkBoxChecked() {
-    return true;
-  }
-
   loginSubmit = async (event) => {
     event.preventDefault();
     const userData = { ...this.state };

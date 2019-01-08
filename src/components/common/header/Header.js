@@ -1,17 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
-// import { Link, IndexLink } from 'react-router';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Signup from '../container/signup/Signup';
-import Login from '../container/login/Login';
-import { signupUser } from '../../actions/signup/signupAction';
-import { loginUser, logoutUser } from '../../actions/login/loginAction';
-import store from '../../store/configureStore';
+import Signup from '../../container/signup/Signup';
+import Login from '../../container/login/Login';
+import { signupUser } from '../../../actions/signup/signupAction';
+import { loginUser, logoutUser } from '../../../actions/login/loginAction';
+import store from '../../../store/configureStore';
 
 
 export class Header extends React.Component {
@@ -28,9 +26,6 @@ export class Header extends React.Component {
       this.props.logout();
       this.setState({ loginDisplay: '' });
       this.props.history.go(0);
-    //   this.props.history.pushState(null, '/');
-    //   this.props.history.pushState(null, '/');
-    //   this.props.history.push('/logout');
     }
 
     loginModalBtn = () => this.setState({ loginDisplay: 'block', signupDisplay: '' });
@@ -51,13 +46,13 @@ export class Header extends React.Component {
           <div className="navbar">
             <div className="header-logo">
 
-              <a href="/">
-                <img className="logo-size" src={require('../../static/logo.png')} alt="Logo"/>
-              </a>
+              <Link to="/">
+                <img className="logo-size" src="../../static/logo.png" alt="Logo"/>
+              </Link>
 
             </div>
             <div className="header-title" >
-              <a href="/">   Questack</a>
+              <Link to="/">   Questack</Link>
             </div>
             <div className="search-header">
               <div className="search-box ">
@@ -71,7 +66,10 @@ export class Header extends React.Component {
                     <div className="header-profile user-letter">{user.username.charAt(0)}</div>
                   </button>
                   <button className="btn-header header-profile-text black-text user">{user.username}</button>
-                  <button className="btn-header header-profile-text black-text "><i className=" dropdown_icon fa fa-sort-desc"></i></button>
+                  <button className="btn-header header-profile-text black-text "> <span className="menutip">
+                    <span className="menutiptext" onClick={this.logOut}>Logout</span><i className=" dropdown_icon fa fa-sort-desc"></i></span></button>
+
+
                 </div>
                 <div className=" show-md-hide-sm">
                   <button className="btn-header">
@@ -79,7 +77,6 @@ export class Header extends React.Component {
                   </button>
                   <button className="btn-header header-profile-text black-text user">{user.username}</button>
                   <button className="btn-header ml1 show-md-hide-sm" onClick={this.logOut} id="logoutModalBtn" >Logout</button>
-
 
 
                 </div>
@@ -108,16 +105,17 @@ Header.propTypes = {
   history: PropTypes.object,
   signup: PropTypes.func,
   login: PropTypes.func,
-  userInfo: PropTypes.object
+  userInfo: PropTypes.object,
+  logout: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   // console.log(state);
   return {
     userInfo: state.loginReducer
   };
 };
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   signup: userData => signupUser(userData),
   login: userData => loginUser(userData),
   logout: () => logoutUser()

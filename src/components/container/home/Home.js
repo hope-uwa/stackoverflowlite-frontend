@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
@@ -8,21 +9,6 @@ import AllQuestion from '../../presentation/allquestions/AllQuestions';
 import Banner from '../banner/Banner';
 
 export class Home extends React.Component {
-  // constructor(props){
-  //     super(props);
-  //     state={
-  //         user:
-  //     }
-  // }
-
-
-  // componentWillReceiveProps =(props) =>{
-  //     const {loginDisplay} =props
-  //     this.setState({ loginDisplay });
-
-  // }
-
-
   componentDidMount =() => {
     this.props.loadQuestion();
   }
@@ -67,15 +53,14 @@ Home.propTypes = {
   allQuestions: PropTypes.array,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
+export const mapStateToProps = (state) => {
   return {
     allQuestion: state.allQuestionReducer.questions,
     user: state.loginReducer
   };
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   loadQuestion: () => loadAllQuestion()
 };
 

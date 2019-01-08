@@ -1,6 +1,5 @@
 
 import {
-  LOAD_ALL_QUESTION,
   USER_QUESTION_FAILURE,
   USER_QUESTION_SUCCESS
 } from '../../../actions/types/allquestions';
@@ -11,11 +10,6 @@ export const initialState = {
 };
 const questionReducer = (state = initialState, action) => {
   switch (action.type) {
-  case LOAD_ALL_QUESTION:
-    return {
-      ...state,
-      isLoading: true
-    };
   case USER_QUESTION_SUCCESS:
     return {
       ...state,

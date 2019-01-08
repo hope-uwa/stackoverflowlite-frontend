@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/sort-comp */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable class-methods-use-this */
@@ -11,7 +12,7 @@ import {
 } from '../../../actions/allQuestions/allQuestionAction';
 
 
-class Sidebar extends React.Component {
+export class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +71,7 @@ class Sidebar extends React.Component {
 
               <ul className="align-center profile__basic">
                 <li className="profile__basic-name user">{user.username}</li>
-                <li className="profile__basic-date">Joined: &nbsp;
+                <li className="profile__basic-date">&nbsp;
                   <span className="user-joined"></span>
                 </li>
               </ul>
@@ -99,13 +100,13 @@ Sidebar.propTypes = {
 };
 
 // export default Sidebar;
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userInfo: state.loginReducer,
     questions: state.allQuestionReducer.questions,
   };
 };
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   loadQ: () => loadAllQuestion(),
 };
 

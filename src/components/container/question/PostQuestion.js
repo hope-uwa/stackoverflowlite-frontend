@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -7,7 +8,7 @@ import Banner from '../banner/Banner';
 import { postQuestion } from '../../../actions/allQuestions/allQuestionAction';
 import store from '../../../store/configureStore';
 
-class PostQuestion extends Component {
+export class PostQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +22,11 @@ class PostQuestion extends Component {
   }
 
   handleSubmit = async (e) => {
-    console.log(this.props);
     e.preventDefault();
-    const { createQuestion, history, success } = this.props;
+    const { createQuestion, history, } = this.props;
     try {
       await createQuestion({ ...this.state });
-      if (success) {
+      if (this.props.success) {
         return setTimeout(() => history.push('/', { prev: 'create' }), 1000);
       }
     } catch (error) {
@@ -64,13 +64,13 @@ PostQuestion.propTypes = {
   createQuestion: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     success: state.createQuestionReducer.status
   };
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   createQuestion: x => postQuestion(x)
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PostQuestion);

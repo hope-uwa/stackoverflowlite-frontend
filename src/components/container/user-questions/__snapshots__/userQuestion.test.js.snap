@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`landing page snap shot 1`] = `
+<Redirect
+  push={false}
+  to="/"
+/>
+`;

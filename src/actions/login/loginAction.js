@@ -18,7 +18,7 @@ export const loginFailure = error => ({
 });
 const logout = () => ({ type: LOG_OUT });
 
-export const loginUser = user => dispatch => Axios.post('http://localhost:5002/api/v1/auth/login', user)
+export const loginUser = user => dispatch => Axios.post('https://uwaelpis.herokuapp.com/api/v1/auth/login', user)
   .then((response) => {
     toast.success('Login successfull');
     dispatch(loginSuccess(response.data));
@@ -32,6 +32,5 @@ export const loginUser = user => dispatch => Axios.post('http://localhost:5002/a
     return LOGIN_FAILURE;
   });
 export const logoutUser = () => (dispatch) => {
- console.log('got');
-  dispatch(logout()); 
+  dispatch(logout());
 };

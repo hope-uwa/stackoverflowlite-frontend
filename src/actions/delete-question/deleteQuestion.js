@@ -19,17 +19,15 @@ export const deleteQuestionAction = qid => (dispatch) => {
   const { token } = store.getState().loginReducer;
   const request = Axios({
     method: 'DELETE',
-    url: `http://localhost:5002/api/v1/questions/${qid}`,
+    url: `https://uwaelpis.herokuapp.com/api/v1/questions/${qid}`,
     headers: { Authorization: token },
   });
   return request.then(
     (response) => {
-      console.log(response);
       toast.success('Question deleted successfully');
       dispatch(deleteQuestionSuccess(response.data.message));
     },
     (err) => {
-      console.log(err.response);
       toast.warn(`${err.response}`);
       dispatch(deleteQuestionFailure(err));
     },

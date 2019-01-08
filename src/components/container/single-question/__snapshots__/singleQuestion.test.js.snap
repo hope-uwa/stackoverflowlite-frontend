@@ -13,7 +13,6 @@ exports[`landing page should show page is loading 1`] = `
       >
         <h1>
            
-          this is the title
         </h1>
         <span
           className="ml2"
@@ -29,13 +28,24 @@ exports[`landing page should show page is loading 1`] = `
       className="question-body"
     />
   </div>
-  <PreferredAnswer />
+  <PreferredAnswer
+    answer={Array []}
+  />
   <div
     className="row  mls0 pb3 answers-board"
   >
-    <h3>
-      No answer has been provided yet
-    </h3>
+    <Answers
+      answers={
+        Object {
+          "answer_body": "",
+          "user_name": "",
+        }
+      }
+      auth={false}
+      correct={[Function]}
+      key="0"
+      qid=""
+    />
   </div>
   <p
     className="align-center blckgrey-text"

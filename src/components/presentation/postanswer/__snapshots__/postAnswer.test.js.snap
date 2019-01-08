@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`display banner should show page is loading 1`] = `
+<PostAnswer
+  id=""
+  post={[Function]}
+>
+  <div
+    className="row m12 mls0 pb3"
+  >
+    <div
+      className="answers-card pt1 pb1"
+    >
+      <div
+        className=" smhide answer__avatar"
+      />
+      <div
+        className="answer__box align-right"
+      >
+        <form
+          id="answer-form"
+        >
+          <h4
+            className="align-left"
+          >
+            Your Answer
+          </h4>
+          <textarea
+            className="answer-text"
+            id="answer"
+            name="body"
+            onChange={[Function]}
+          />
+          <button
+            className="btn btn-success btn-sm"
+            id="answerQuestion"
+            onClick={[Function]}
+          >
+            Add Answer
+          </button>
+        </form>
+      </div>
+      <div
+        className="answer__response black-text"
+      />
+    </div>
+  </div>
+</PostAnswer>
+`;

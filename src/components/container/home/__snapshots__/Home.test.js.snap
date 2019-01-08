@@ -12,7 +12,7 @@ exports[`landing page should show page is loading 1`] = `
       key="0"
       questions={
         Object {
-          "title": "this is the title",
+          "title": "this is the titleundefined",
         }
       }
       view={[Function]}

@@ -19,30 +19,8 @@ describe('<Login />', () => {
     const wrapper = mount(<Provider store={store}>
       <Login/>
     </Provider>);
-    
+
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('call function', () => {
-    const mockSignupFn = jest.fn();
-    const initialState = {};
-    const store = mockStore(initialState);
-
-    const wrapper = shallow(<Provider store={store}>
-      <Login/>
-    </Provider>);
-    // console.log(wrapper.debug());
-    // expect(wrapper.dive().instance().checkBoxChecked()).toEqual(true);
-    // expect(wrapper.dive().instance().closeModal()).toReturn(mockSignupFn);
-    // const form = wrapper.find('form');
-    // form.simulate('submit');
-    // wrapper.instance().loginSubmit() = mockSignupFn;
-    // expect(wrapper.dive().instance().loginSubmit()).toContain()
-
-    //     const spy = jest.spyOn(Login.prototype, 'componentWillReceiveProps');
-    // const wrappers = mount(<Login />);
-    // wrappers.instance().componentWillReceiveProps();
-    // expect(spy).toHaveBeenCalled();
   });
 
   it('render login page correctly', () => {
@@ -87,8 +65,43 @@ describe('<Login />', () => {
     expect(mockSignupFn.mock.calls.length).toBe(0);
     wrapper.unmount();
   });
-  it("loginSubmit called on submit", () => {
-    const value = "Makers Academy";
+
+  it('should load componentWillRecieveProps', () => {
+    const props = {
+      login: () => {},
+      loginDisplay: 'display'
+    };
+
+    const component = shallow(<Login {...props}/>);
+    component.instance().componentWillReceiveProps({ ...props });
+    expect(component.instance().componentWillReceiveProps).toBeDefined();
+  });
+
+  it('should define closeModal', () => {
+    const props = {
+      login: () => {},
+      loginDisplay: 'display'
+    };
+    const component = shallow(<Login {...props}/>);
+    component.instance().closeModal();
+    expect(component.instance().closeModal).toBeDefined();
+  });
+
+  it('should define signupSubmit', () => {
+    const props = {
+      login: () => {},
+      loginDisplay: 'display',
+      loginInfo: { token: 'xyz' }
+    };
+    const e = {
+      target: { innerHTML: 'LOADING' }
+    };
+    const component = shallow(<Login {...props}/>);
+    component.instance().loginSubmit(e);
+    expect(component.instance().loginSubmit).toBeDefined();
+  });
+
+  it('loginSubmit called on submit', () => {
     const loginSubmit = jest.fn();
     const wrapper = mount(<Login loginSubmit={loginSubmit}/>);
 
@@ -96,5 +109,5 @@ describe('<Login />', () => {
     result.simulate('click');
     expect(loginSubmit.called).toBe();
   });
-// 
+//
 });

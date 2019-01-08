@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';

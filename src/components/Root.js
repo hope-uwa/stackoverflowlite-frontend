@@ -1,11 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import PropTypes from 'prop-types';
-import Header from './common/Header';
-import Sidebar from './common/sidebar/Sidebar';
-import Home from './container/home/Home';
+import Headers from './common/header/Header';
+import Sidebars from './common/sidebar/Sidebar';
+
 
 const history = createHistory();
 class Root extends Component {
@@ -13,19 +12,18 @@ class Root extends Component {
     const renderData = (
       this.props.children
     );
-    // console.log(typeof this.props.children)
 
     return (
       <div>
 
-        <Header history= {history}/>
+        <Headers history= {history}/>
         <main>
           <div className="container">
             <div className="row">
               <div className="col9 colsm12  col-order2 ">
                 {renderData}
               </div>
-              <Sidebar/>
+              <Sidebars/>
             </div>
           </div>
         </main>
