@@ -1,30 +1,51 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { PostQuestion, mapDispatchToProps, mapStateToProps } from './PostQuestion';
+import { MemoryRouter } from 'react-router-dom';
+import { shallow, mount } from 'enzyme';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import ConnectedPostQuestion, { PostQuestion, mapDispatchToProps, mapStateToProps } from './PostQuestion';
 
+const initialState = {
+  createQuestionReducer: {
+    message: '',
+    error: '',
+    status: 'true'
+  }
+};
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 describe('landing page', () => {
-  const getProps = () => (
-    {
-      success: '',
-      createQuestion: () => {}
+  const props = {
+    success: 'success',
+    createQuestion: jest.fn(),
+    history: {
+      push: jest.fn(),
     }
-  );
+  };
+  const store = mockStore(initialState);
+
   it('snap shot', () => {
-    const props = getProps(true);
     const component = shallow(<PostQuestion {...props}/>);
     expect(component).toMatchSnapshot();
   });
 
-  it('should load viewQuestion', () => {
-    const props = getProps();
+  it('should load viewQuestion', async () => {
     const e = {
       target: {
         value: ''
-      }
+      },
+      preventDefault: jest.fn(),
     };
-    const component = shallow(<PostQuestion {...props}/>);
-    component.instance().handleSubmit(e);
-    expect(component.instance().handleSubmit).toBeDefined();
+
+    const component = mount(
+      <MemoryRouter>
+        <ConnectedPostQuestion store={store} {...props}/>
+      </MemoryRouter>
+    );
+    const instance = component.find('PostQuestion').instance();
+
+    await instance.handleSubmit(e);
+    expect(instance.handleSubmit).toBeDefined();
   });
   it('should define handleInputChange', () => {
     const e = {
@@ -32,7 +53,6 @@ describe('landing page', () => {
         value: ''
       }
     };
-    const props = getProps();
     const component = shallow(<PostQuestion {...props}/>);
     component.instance().handleInputChanges(e);
     expect(component.instance().handleInputChanges).toBeDefined();

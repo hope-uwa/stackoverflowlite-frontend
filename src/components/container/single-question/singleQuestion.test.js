@@ -5,42 +5,46 @@ import { SingleQuestion, mapDispatchToProps, mapStateToProps } from './singleQue
 // import { loadAnArticle } from '../../../actions/singlearticle/singleArticleAction';
 
 describe('landing page', () => {
-  const getProps = value => (
-    {
-      id: '',
-      question: [],
-      answers: [{ answer_body: '', user_name: '' }],
-      preferred: [],
-      postedAnswer: [{ answer_body: value }],
-      getSingleQuestion: () => {},
-      chooseAnswer: () => {},
-      postAnswer: () => {},
-      deletePost: () => {},
-    }
-  );
+  const props = {
+    id: '',
+    question: [],
+    answers: [{ answer_body: '', user_name: '' }],
+    preferred: [],
+    postedAnswer: [{ answer_body: 'value' }],
+    getSingleQuestion: () => {},
+    chooseAnswer: () => {},
+    postAnswer: () => {},
+    deletePost: () => {},
+  };
+  const props2 = {
+    id: '',
+    question: [],
+    answers: [{ answer_body: '', user_name: '' }],
+    preferred: [],
+    postedAnswer: [{ answer_body: '' }],
+    getSingleQuestion: () => {},
+    chooseAnswer: () => {},
+    postAnswer: () => {},
+    deletePost: () => {},
+  };
   it('should show page is loading', () => {
-    const props = getProps('true');
     const component = shallow(<SingleQuestion {...props}/>);
     expect(component).toMatchSnapshot();
   });
 
   it('should define makePreferred', () => {
-    const props = getProps('true');
     const component = shallow(<SingleQuestion {...props}/>);
     component.instance().makePreferred('3', '2');
     expect(component.instance().makePreferred).toBeDefined();
   });
 
   it('should define deleteAction', () => {
-    const props = getProps('true');
     const component = shallow(<SingleQuestion {...props}/>);
     component.instance().deleteAction();
     expect(component.instance().deleteAction).toBeDefined();
   });
 
   it('should load componentWillRecieveProps', () => {
-    const props2 = getProps('false');
-    const props = getProps('true');
     const component = shallow(<SingleQuestion {...props}/>);
     component.instance().componentWillReceiveProps({ ...props2 });
     expect(component.instance().componentWillReceiveProps).toBeDefined();
