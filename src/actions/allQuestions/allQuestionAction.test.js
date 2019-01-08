@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-use-before-define */
 import MockAdapter from 'axios-mock-adapter';
 import configureMockStore from 'redux-mock-store';
@@ -20,13 +21,13 @@ import {
   postQuestion,
   postQuestionFailure,
   postQuestionSuccess,
+  loadUserQuestions
 
 } from './allQuestionAction';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const mock = new MockAdapter(axios);
-const baseURL = 'https://uwaelpis.herokuapp.com/api/v1/questions';
 
 
 describe('', () => {
@@ -34,35 +35,142 @@ describe('', () => {
     mock.reset();
   });
 
-  it('It fetch a single article', () => {
-    // const question = [
-    //   { 
-    //     id: 25, 
-    //     question_title: "ask a questionbhere", 
-    //     question_body: "where is the question you want to ask", 
-    //     created_at: "2018-12-27T23:39:57.000Z", 
-    //     user_name: "hope",
-    //   },
-        
-    // ];
+  it('It fetch all questions', () => {
+    const question = undefined;
 
-    mock.onGet('http://localhost:5002/api/v1/questions').reply(200, {
+    mock.onGet('https://uwaelpis.herokuapp.com/api/v1/questions').reply(200, {
       status: 'success',
-      questions,
+      question,
     });
 
-    const questions = undefined;
     const mockActions = [
-      // {
-      //   type: LOAD_ALL_QUESTION,
-      // }, 
       {
-        type: ALL_QUESTION_SUCCESS, questions,
+        type: 'ALL_QUESTION_SUCCESS', questions: question,
       },
+
     ];
 
     const store = mockStore({ });
     return store.dispatch(loadAllQuestion()).then(() => expect(store.getActions()).toEqual(mockActions));
+  });
+
+  // it('It fetch user questions', () => {
+  //   const questions = [
+
+  //   ];
+
+  //   mock.onGet('http://localhost:5002/api/v1/questions').reply(200, {
+  //     status: 'success',
+  //     questions,
+  //   });
+
+  //   const mockActions = [
+  //     {
+  //       type: 'POST_QUESTION_SUCCESS', questions: question,
+  //     },
+
+  //   ];
+
+  //   const store = mockStore({ });
+  //   return store.dispatch(loadUserQuestions()).then(() => expect(store.getActions()).toEqual(mockActions));
+  // });
+
+  it('It fail on fetch all questions', () => {
+    const serverError = new Error('Request failed with status code 500');
+    const error = serverError;
+
+    mock.onGet('https://uwaelpis.herokuapp.com/api/v1/questions').reply(500, {
+      status: 'success',
+      error
+    });
+
+    const mockActions = [
+      {
+        type: 'ALL_QUESTION_FAILURE', error
+      }
+    ];
+
+    const store = mockStore({ });
+    return store.dispatch(loadAllQuestion()).then(() => expect(store.getActions()).toEqual(mockActions));
+  });
+
+  it('It fail on fetch user questions', () => {
+    const serverError = new Error('Request failed with status code 500');
+    const error = serverError;
+
+    mock.onGet('https://uwaelpis.herokuapp.com/api/v1/questions').reply(500, {
+      status: 'success',
+      error
+    });
+
+    const mockActions = [
+      {
+        type: 'USER_QUESTION_FAILURE', error
+      }
+    ];
+
+    const store = mockStore({ });
+    return store.dispatch(loadUserQuestions()).then(() => expect(store.getActions()).toEqual(mockActions));
+  });
+
+  it('should post question successfully', () => {
+    const mockData = {
+      success: true,
+      message: 'stuff',
+
+    };
+    mock
+      .onPost('https://uwaelpis.herokuapp.com/api/v1/questions')
+      .reply(200, mockData);
+
+    const question = {
+      title: 'this is the title',
+      body: 'this is the body',
+    };
+
+    const expectedActions = [
+      {
+        type: 'POST_QUESTION_SUCCESS',
+        message: 'stuff'
+      }
+
+    ];
+
+    const store = mockStore({ question: {} });
+    return store.dispatch(postQuestion(question)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it('should fail to post question', () => {
+    const serverError = new Error('Request failed with status code 400');
+    const error = serverError;
+    const mockData = {
+      success: true,
+      message: 'stuff',
+
+    };
+
+    mock
+      .onPost('https://uwaelpis.herokuapp.com/api/v1/questions')
+      .reply(400, mockData);
+
+    const question = {
+      title: '',
+      body: 'this is the body',
+    };
+
+    const expectedActions = [
+      {
+        type: 'POST_QUESTION_FAILURE',
+        error
+      },
+    ];
+
+    const store = mockStore({ question: {} });
+    return store.dispatch(postQuestion(question)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
   });
 
 
@@ -82,7 +190,7 @@ describe('', () => {
     const action = allQuestionSuccess(questions);
     expect(action).toEqual(expected);
   });
-  
+
   it('failed loading of questions', () => {
     const error = {};
     const errorLoading = {

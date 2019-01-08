@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
@@ -31,7 +32,6 @@ export class SingleQuestion extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { id } = this.props;
     if (JSON.stringify(this.props.postedAnswer) !== JSON.stringify(nextProps.postedAnswer)) {
-        console.log('hit it')
       this.props.getSingleQuestion(id);
     }
   }
@@ -72,10 +72,10 @@ export class SingleQuestion extends React.Component {
           <div className="col3 pt2 pb1">
             {auth && <span className="tooltip"><span className="tooltiptext">
               <ul className="question-actions">
-                <li onClick={this.deleteAction}>Delete</li>
-               
+                <li>Delete</li>
+
               </ul>
-            </span><i className="question-droptip ml1 msl1 fa fa-trash-o"></i></span>}
+            </span><i onClick={this.deleteAction} className="question-droptip ml1 msl1 fa fa-trash-o"></i></span>}
 
           </div>
           <div className="question-body">
@@ -85,7 +85,7 @@ export class SingleQuestion extends React.Component {
         <PreferredAnswer answer={preferred} />
         <div className="row  mls0 pb3 answers-board">
           {Array.isArray(answers)
-            ? answers.map(x => <Answer answers={x} key={x.id} correct ={this.makePreferred} qid={id} auth={auth}/>)
+            ? answers.map((x, key) => <Answer answers={x} key={key} correct ={this.makePreferred} qid={id} auth={auth} />)
             : preferred ? '' : <h3>No answer has been provided yet</h3>}
         </div>
         {user.token ? <PostAnswer post={postAnswer} id={id}/> : <p className="align-center blckgrey-text">You have to login to add an answer</p>}
@@ -98,8 +98,8 @@ export class SingleQuestion extends React.Component {
 SingleQuestion.propTypes = {
   history: PropTypes.object,
   id: PropTypes.string,
-  question: PropTypes.array,
-  answers: PropTypes.array,
+  //   question: PropTypes.array,
+  //   answers: PropTypes.array,
   preferred: PropTypes.array,
   getSingleQuestion: PropTypes.func,
   chooseAnswer: PropTypes.func,
@@ -108,7 +108,7 @@ SingleQuestion.propTypes = {
   postedAnswer: PropTypes.array
 
 };
-const mapStateToProps = (state, myOwnProps) => {
+export const mapStateToProps = (state, myOwnProps) => {
   return {
     id: myOwnProps.match.params.id,
     question: state.singleQuestion.question,
@@ -118,7 +118,7 @@ const mapStateToProps = (state, myOwnProps) => {
 
   };
 };
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   getSingleQuestion: x => loadSingleQuestion(x),
   chooseAnswer: (qid, aid) => correctAnswer(qid, aid),
   postAnswer: (qid, answer) => postAnswerAction(qid, answer),

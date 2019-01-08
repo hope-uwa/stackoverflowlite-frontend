@@ -7,7 +7,7 @@ import { loadAllQuestion } from '../../../actions/allQuestions/allQuestionAction
 import AllQuestion from '../../presentation/allquestions/AllQuestions';
 import Banner from '../banner/Banner';
 
-export class AnsweredQuestion extends React.Component {
+export class UnansweredQuestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,22 +53,21 @@ export class AnsweredQuestion extends React.Component {
   }
 }
 
-AnsweredQuestion.propTypes = {
-  history: PropTypes.object,
+UnansweredQuestion.propTypes = {
   loadQuestion: PropTypes.func,
   allQuestions: PropTypes.array,
+  history: PropTypes.object,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
+export const mapStateToProps = (state) => {
   return {
     allQuestions: state.allQuestionReducer.questions,
     user: state.loginReducer
   };
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   loadQuestion: () => loadAllQuestion()
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnsweredQuestion);
+export default connect(mapStateToProps, mapDispatchToProps)(UnansweredQuestion);

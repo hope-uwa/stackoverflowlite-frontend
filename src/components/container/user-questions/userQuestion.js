@@ -9,31 +9,9 @@ import AllQuestion from '../../presentation/allquestions/AllQuestions';
 import Banner from '../banner/Banner';
 
 export class UserQuestion extends React.Component {
-  // constructor(props){
-  //     super(props);
-  //     state={
-  //         user:
-  //     }
-  // }
-
-
-  // componentWillReceiveProps =(props) =>{
-  //     const {loginDisplay} =props
-  //     this.setState({ loginDisplay });
-
-  // }
-
-
   componentDidMount =() => {
     this.props.loadQuestion();
   }
-
-  //   componentWillReceiveProps(nextProps) {
-  //     if (JSON.stringify(this.props.user) !== JSON.stringify(nextProps.user)) {
-  //       this.props.loadUserQuestions();
-  //     }
-  //   }
-
 
   viewQuestion = (questionId) => {
     const {
@@ -52,8 +30,6 @@ export class UserQuestion extends React.Component {
 
       </div>
       <div className="pagination">
-        <a href="#">❮</a>
-        <a href="#">❯</a>
       </div>
     </div> : <Redirect to="/" />;
 
@@ -62,22 +38,20 @@ export class UserQuestion extends React.Component {
 }
 
 UserQuestion.propTypes = {
-  history: PropTypes.object,
   loadQuestion: PropTypes.func,
   allQuestion: PropTypes.array,
-  user: PropTypes.object
-
+  user: PropTypes.object,
+  history: PropTypes.object,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
+export const mapStateToProps = (state) => {
   return {
     allQuestion: state.userQuestionReducer.questions,
     user: state.loginReducer
   };
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   loadQuestion: () => loadUserQuestions()
 };
 

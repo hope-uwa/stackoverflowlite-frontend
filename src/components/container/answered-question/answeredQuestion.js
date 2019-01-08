@@ -28,6 +28,7 @@ export class AnsweredQuestion extends React.Component {
 
   viewQuestion = (questionId) => {
     const {
+      // eslint-disable-next-line react/prop-types
       history
     } = this.props;
     history.push(`/questions/${questionId}`);
@@ -54,20 +55,18 @@ export class AnsweredQuestion extends React.Component {
 }
 
 AnsweredQuestion.propTypes = {
-  history: PropTypes.object,
   loadQuestion: PropTypes.func,
   allQuestions: PropTypes.array,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
+export const mapStateToProps = (state) => {
   return {
     allQuestions: state.allQuestionReducer.questions,
     user: state.loginReducer
   };
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   loadQuestion: () => loadAllQuestion()
 };
 

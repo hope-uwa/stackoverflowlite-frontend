@@ -19,7 +19,7 @@ export const correctAnswer = (qid, aid) => (dispatch) => {
   const { token } = store.getState().loginReducer;
   const request = Axios({
     method: 'PUT',
-    url: `http://localhost:5002/api/v1/questions/${qid}/answers/${aid}/accept`,
+    url: `https://uwaelpis.herokuapp.com/api/v1/questions/${qid}/answers/${aid}/accept`,
     headers: { Authorization: token },
   });
   return request.then(

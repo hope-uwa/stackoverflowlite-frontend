@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
-const merge = require("webpack-merge");
+const merge = require('webpack-merge');
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -41,7 +42,7 @@ module.exports = (env) => {
           template: './src/index.html',
           filename: './index.html',
         }),
-        new webpack.DefinePlugin({ 
+        new webpack.DefinePlugin({
           'process.env.VERSION': JSON.stringify(env.VERSION),
           'process.env.PLATFORM': JSON.stringify(env.PLATFORM),
         }),

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,7 +18,7 @@ const AllQuestions = (props, key) => {
           <span>{moment(questions.created_at).fromNow()} </span>
           <span className="mr2"><a className="green-text" >{questions.user_name}</a></span>
           <span className="hide-md-show-sm answer-given">
-            <i className="fa fa-comments-o"></i> &nbsp; 5</span>
+            <i className="fa fa-comments-o"></i> &nbsp; {questions.count}</span>
         </div>
         <div className="question__content-body">
           <span>{questions.question_body.substring(0, 150)}</span>

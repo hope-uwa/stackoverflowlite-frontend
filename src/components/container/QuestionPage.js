@@ -6,8 +6,6 @@ import React from 'react';
 //  import configureStore from '../../store';
 
 class QuestionPage extends React.Component {
- 
-
   render() {
     return (
       <div>

@@ -1,6 +1,6 @@
 import { POST_ANSWER_FAILURE, POST_ANSWER_SUCCESS, } from '../../../actions/types/answers';
 
-const initialState = {
+export const initialState = {
   answer: [],
   success: false
 };

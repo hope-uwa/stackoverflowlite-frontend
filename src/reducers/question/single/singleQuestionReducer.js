@@ -6,7 +6,7 @@ import {
 } from '../../../actions/types/allquestions';
 
 
-const initialState = {
+export const initialState = {
   isLoading: false,
   question: [],
   answer: [],

@@ -107,3 +107,6 @@ input:-webkit-autofill{
     color: #4CAF50;
     
 }
+textarea{
+    resize:none;
+}

@@ -4,7 +4,9 @@ import {
 import {
   SIGN_UP_SUCCESS, SIGN_UP_FAILURE
 } from '../../actions/types/signup';
-let initialState;
+
+// eslint-disable-next-line import/no-mutable-exports
+export let initialState;
 
 try {
   const persistedLogin = JSON.parse(localStorage.getItem('user'));
@@ -24,7 +26,6 @@ try {
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-
   case LOGIN_SUCCESS:
     return {
       ...state,

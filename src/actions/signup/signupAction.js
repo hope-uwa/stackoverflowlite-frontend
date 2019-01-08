@@ -20,7 +20,7 @@ export const signupRequest = () => ({
   type: SIGN_UP_REQUEST,
 });
 
-export const signupUser = user => dispatch => Axios.post('http://localhost:5002/api/v1/auth/signup', user)
+export const signupUser = user => dispatch => Axios.post('https://uwaelpis.herokuapp.com/api/v1/auth/signup', user)
   .then((response) => {
     toast.success('Signup successfull');
     dispatch(signupSuccess(response));

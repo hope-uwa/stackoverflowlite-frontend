@@ -19,18 +19,16 @@ export const postAnswerAction = (qid, answer) => (dispatch) => {
   const { token } = store.getState().loginReducer;
   const request = Axios({
     method: 'POST',
-    url: `http://localhost:5002/api/v1/questions/${qid}/answers`,
+    url: `https://uwaelpis.herokuapp.com/api/v1/questions/${qid}/answers`,
     data: answer,
     headers: { Authorization: token },
   });
   return request.then(
     (response) => {
-      console.log(response.data);
       toast.success('Answer posted successfully');
       dispatch(postAnswerSuccess(response.data));
     },
     (err) => {
-      console.log(err.response);
       toast.warn(`${err.response.data.error}`);
       dispatch(postAnswerFailure(err));
     },

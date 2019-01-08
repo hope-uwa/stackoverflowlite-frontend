@@ -12,7 +12,7 @@ import {
 } from '../types/allquestions';
 import store from '../../store/configureStore';
 
-const { username, token } = store.getState().loginReducer;
+const { username } = store.getState().loginReducer;
 
 export const loadQuestion = () => ({
   type: LOAD_ALL_QUESTION
@@ -48,7 +48,7 @@ export const userQuestionSuccess = questions => ({
 export const loadAllQuestion = () => (dispatch) => {
   const request = Axios({
     method: 'GET',
-    url: 'http://localhost:5002/api/v1/questions',
+    url: 'https://uwaelpis.herokuapp.com/api/v1/questions',
     headers: [],
   });
   dispatch(loadQuestion);
@@ -63,9 +63,9 @@ export const loadAllQuestion = () => (dispatch) => {
 export const postQuestion = question => (dispatch) => {
   const request = Axios({
     method: 'POST',
-    url: 'http://localhost:5002/api/v1/questions',
+    url: 'https://uwaelpis.herokuapp.com/api/v1/questions',
     data: question,
-    headers: { Authorization: token },
+    headers: { Authorization: store.getState().loginReducer.token },
   });
   dispatch(loadQuestion);
   return request.then(
@@ -80,10 +80,11 @@ export const postQuestion = question => (dispatch) => {
   );
 };
 
+
 export const loadUserQuestions = () => (dispatch) => {
   const request = Axios({
     method: 'GET',
-    url: 'http://localhost:5002/api/v1/questions',
+    url: 'https://uwaelpis.herokuapp.com/api/v1/questions',
     headers: [],
   });
   dispatch(loadQuestion);

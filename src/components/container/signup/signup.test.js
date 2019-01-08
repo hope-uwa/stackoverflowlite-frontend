@@ -51,6 +51,37 @@ describe('<Signup />', () => {
     });
     wrapper.unmount();
   });
+  it('should load componentWillRecieveProps', () => {
+    const props = {
+      signup: () => {},
+      signupDisplay: 'display'
+    };
+
+    const component = shallow(<Signup {...props}/>);
+    component.instance().componentWillReceiveProps({ ...props });
+    expect(component.instance().componentWillReceiveProps).toBeDefined();
+  });
+
+  it('should define closeModal', () => {
+    const props = {
+      signup: () => {},
+      signupDisplay: 'display'
+    };
+    const component = shallow(<Signup {...props}/>);
+    component.instance().closeModal();
+    expect(component.instance().closeModal).toBeDefined();
+  });
+
+  it('should define signupSubmit', () => {
+    const props = {
+      signup: () => {},
+      signupDisplay: 'display',
+      signupInfo: { token: 'xyz' }
+    };
+    const component = shallow(<Signup {...props}/>);
+    component.instance().signupSubmit();
+    expect(component.instance().signupSubmit).toBeDefined();
+  });
 
   it('should submit inputs from the state', () => {
     const mockSignupFn = jest.fn();

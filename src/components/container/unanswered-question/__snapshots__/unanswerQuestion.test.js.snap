@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`landing page snap shot 1`] = `
+<div>
+  <Banner
+    title="Unanswered Questions"
+  />
+  <div
+    className=" allquestion row pl2 pls1"
+  />
+  <div
+    className="pagination"
+  >
+    <a
+      href="#"
+    >
+      ❮
+    </a>
+    <a
+      href="#"
+    >
+      ❯
+    </a>
+  </div>
+</div>
+`;

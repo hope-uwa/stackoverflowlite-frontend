@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`load sidebar snap shot 1`] = `
+<div
+  className="col3 colsm12 sidebar col-order1 "
+>
+  <div
+    className="row sidebar-fixed h-sm-auto"
+  >
+    <ul
+      className="align-center profile__actions"
+    >
+      <li
+        className="profile__actions-questions align-center "
+      >
+        <h3>
+          Questack is a platform where people can ask questions and provide answers
+        </h3>
+      </li>
+      <ul
+        className="align-center profile__actions"
+      >
+        <li
+          className="profile__actions-questions"
+        >
+          <Link
+            replace={false}
+            to="/answered"
+          >
+            <i
+              className="dblue-text fa fa-fire"
+            />
+             Answered Questions  
+            <span
+              className="no-of-q green-text"
+            />
+          </Link>
+        </li>
+        <li
+          className="profile__actions-questions"
+        >
+          <Link
+            replace={false}
+            to="/unanswered"
+          >
+            <i
+              className="dblue-text fa fa-fire"
+            />
+             Unanswered Questions  
+            <span
+              className="no-of-q green-text"
+            />
+          </Link>
+        </li>
+        <li
+          className="profile__actions-threads"
+        >
+           
+          <Link
+            replace={false}
+            to="/"
+          >
+            <i
+              className=" dblue-text fa fa-comments"
+            />
+             All Questions   
+            <span
+              className="no-of-all-q green-text"
+            />
+          </Link>
+        </li>
+      </ul>
+    </ul>
+  </div>
+</div>
+`;

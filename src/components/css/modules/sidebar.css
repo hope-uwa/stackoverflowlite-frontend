@@ -8,6 +8,17 @@
     color:#828994;
     margin-bottom: 0px;
 }
+@media(max-width:768px){
+    .profile__basic{
+        display: none;
+    }
+    .profile-avatar{
+        display:none!important;
+    }
+    .sidebar-fixed{
+        margin: 0px!important;
+    }
+}
 .profile__basic-name{
     font-size: 30px;
     font-weight: 900;
