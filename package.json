@@ -4,9 +4,11 @@
   "description": "React app for stackoverflowlite app ",
   "main": "index.js",
   "scripts": {
-    "start": "webpack && npm run build && node server/dist/app.js",
-    "build": "rm -rf server/dist && babel server --out-dir server/dist",
+    "start": "npm run heroku:prebuild && webpack && npm run prebuild && node server/dist/app.js",
     "dev": "webpack-dev-server --open",
+    "prebuild": "rm -rf server/dist && babel server --out-dir server/dist",
+    "heroku:prebuild": "npm install --only=dev",
+    "build": "webpack --mode production",
     "test": "jest --config ./jest.config.json --coverage --colors",
     "test:watch": "jest --config ./jest.config.json --watch"
   },
